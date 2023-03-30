@@ -6,12 +6,12 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 23:43:07 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/30 01:18:28 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:29:12 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libftprintf.h"
-#include <unistd.h>
+#include "libftprintf.h"
+
 void	ft_rec_hexa(unsigned long long memo, char *hexa)
 {
 	if (memo / 16 == 0)
