@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 10:55:31 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/30 14:29:43 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:59:08 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,23 @@ int	ft_check_format(va_list ap, const char *format)
 
 	sum = 0;
 	if (*format == 'c')
-		sum += ft_putchar(va_arg(ap, int));
+		sum += ft_putchar((char)va_arg(ap, int));
 	else if (*format == 's')
-		sum += ft_putstr_fd(va_arg(ap, void *));
+		sum += ft_putstr(va_arg(ap, void *));
 	else if (*format == 'p')
-		sum += ft_puthexa(va_arg(ap, void *))
+		sum += ft_putnbr_hexa((unsigned long long)va_arg(ap, void *), 1);
 	else if (*format == 'd' || *format == 'i')
-		sum += ft_putnbr(va_arg(ap, int));
+		sum += ft_putnbr_sign(va_arg(ap, int));
 	else if (*format == 'u')
-		va_arg(ap, unsigned int);
+		sum += ft_putnbr_unsign(va_arg(ap, unsigned int));
 	else if (*format == 'x')
-		va_arg(ap, unsigned int);
+		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), 1);
 	else if (*format == 'X')
-		va_arg(ap, unsigned int);
+		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), 0);
 	else if (*format == '%')
-		sum += write(1, "%", 1);
+		sum += ft_putchar('%');
+	else
+		return (-1);
 	return (sum);
 }
 
@@ -61,5 +63,11 @@ int	ft_printf(const char *format, ...)
 		format++;
 	}
 	va_end(ap);
-	return (i);
+	return (sum);
+}
+#include <stdio.h>
+int	main()
+{
+	ft_printf("%c\n%c\n%c\n", 'a', 'b', 'c');
+	printf("%c\n%c\n%c\n", 'a', 'b', 'c');
 }

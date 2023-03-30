@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_hexa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 23:43:07 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/30 14:29:12 by seonggoc         ###   ########.fr       */
+/*   Created: 2023/03/30 15:16:08 by seonggoc          #+#    #+#             */
+/*   Updated: 2023/03/30 16:29:54 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_rec_hexa(unsigned long long memo, char *hexa)
+static int	ft_rec_put_nbr(int nbr, char *base, int *i)
 {
-	if (memo / 16 == 0)
+	*i += 1;
+	if (nbr < 16)
 	{
-		write(1, &hexa[memo % 16], 1);
+		ft_putchar(base[nbr]);
 	}
 	else
 	{
-		ft_rec_hexa(memo / 16, hexa);
-		write(1, &hexa[memo % 16], 1);
+		ft_rec_put_nbr(nbr / 16, base, i);
+		ft_putchar(base[nbr % 16]);
 	}
+	return (*i);
 }
 
-int	ft_puthexa(void *ptr)
+int	ft_putnbr_hexa(unsigned long long nbr, int num_case)
 {
-	char				*hexa;;
-	unsigned long long	memo;
+	int		i;
 
-	memo = (unsigned long long)ptr;
-	hexa = "0123456789abcdef";
-	ft_rec_hexa(memo, hexa);
-	return (1);
+	i = 0;
+	if (num_case == 0)
+	{
+		return (ft_rec_put_nbr(nbr, "0123456789ABCDEF", &i));
+	}
+	return (ft_rec_put_nbr(nbr, "0123456789abcdef", &i));
 }

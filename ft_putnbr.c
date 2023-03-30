@@ -1,50 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggoc <seonggoc@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 01:27:51 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/30 14:28:39 by seonggoc         ###   ########.fr       */
+/*   Created: 2023/01/09 21:28:50 by seonggoc          #+#    #+#             */
+/*   Updated: 2023/03/30 16:15:34 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-static void	ft_putchar(char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libftprintf.h"
 
-static void	ft_recur(int n, int fd)
+static void	ft_recur(int nb, int *i)
 {
-	if (n <= 9)
+	*i += 1;
+	if (nb <= 9)
 	{
-		ft_putchar(n + '0', fd);
+		ft_putchar(nb + '0');
 	}
 	else
 	{
-		ft_recur(n / 10, fd);
-		ft_putchar(n % 10 + '0', fd);
+		ft_recur(nb / 10, i);
+		ft_putchar(nb % 10 + '0');
 	}
 }
 
-static int	ft_putnbr(unsigned int n, int fd)
+int	ft_putnbr_sign(int nb)
 {
 	int	i;
 
-	ft_recur(n, fd);
 	i = 0;
-	while (n)
+	if (nb == -2147483648)
 	{
-		n /= 10;
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
 		i++;
+		nb = -nb;
+		ft_recur(nb, &i);
+	}
+	else
+	{
+		ft_recur(nb, &i);
 	}
 	return (i);
-}
-
-int	ft_putnbr_fd(int n)
-{
-	
-	ft_putnbr(n, STDOUT_FILENO);
 }
