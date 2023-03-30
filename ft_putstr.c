@@ -12,23 +12,20 @@
 
 #include "ft_printf.h"
 
-static int	ft_strlen(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (!str)
+	{
+		write(STDOUT_FILENO, "(null)", 6);
+		return (6);
+	}
 	while (str[i])
 	{
+		ft_putchar(str[i]);
 		i++;
 	}
 	return (i);
-}
-
-int	ft_putstr(char *str)
-{
-	int	len;
-
-	len = ft_strlen(str);
-	write(STDIN_FILENO, str, len);
-	return (len);
 }

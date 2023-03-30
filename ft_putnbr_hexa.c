@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	ft_rec_put_nbr(int nbr, char *base, int *i)
+static int	ft_rec_put_nbr(unsigned long long nbr, char *base, int *i)
 {
 	*i += 1;
 	if (nbr < 16)
@@ -27,14 +27,19 @@ static int	ft_rec_put_nbr(int nbr, char *base, int *i)
 	return (*i);
 }
 
-int	ft_putnbr_hexa(unsigned long long nbr, int num_case)
+int	ft_putnbr_hexa(unsigned long long nbr, const char *format)
 {
 	int		i;
 
 	i = 0;
-	if (num_case == 0)
+	if (*format == 'X')
 	{
 		return (ft_rec_put_nbr(nbr, "0123456789ABCDEF", &i));
+	}
+	else if (*format == 'p')
+	{
+		write(1, "0x", 2);
+		i += 2;
 	}
 	return (ft_rec_put_nbr(nbr, "0123456789abcdef", &i));
 }

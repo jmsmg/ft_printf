@@ -22,15 +22,15 @@ static int	ft_check_format(va_list ap, const char *format)
 	else if (*format == 's')
 		sum += ft_putstr(va_arg(ap, void *));
 	else if (*format == 'p')
-		sum += ft_putnbr_hexa((unsigned long long)va_arg(ap, void *), 1);
+		sum += ft_putnbr_hexa((unsigned long long)va_arg(ap, void *), format);
 	else if (*format == 'd' || *format == 'i')
 		sum += ft_putnbr_sign(va_arg(ap, int));
 	else if (*format == 'u')
 		sum += ft_putnbr_unsign(va_arg(ap, unsigned int));
 	else if (*format == 'x')
-		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), 1);
+		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), format);
 	else if (*format == 'X')
-		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), 0);
+		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), format);
 	else if (*format == '%')
 		sum += ft_putchar('%');
 	else
@@ -65,3 +65,11 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (sum);
 }
+// #include <stdio.h>
+// int	main()
+// {
+// 	int	*a;
+
+// 	ft_printf(" %p ", a);
+// 	printf(" %p ", a);
+// }

@@ -15,9 +15,10 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-int	ft_putchar(char c);
+
 int	ft_printf(const char *format, ...);
-int	ft_putnbr_hexa(unsigned long long nbr, int num_case);
+int	ft_putchar(char c);
+int	ft_putnbr_hexa(unsigned long long nbr, const char *format);
 unsigned int	ft_putnbr_unsign(unsigned int n);
 int	ft_putnbr_sign(int nb);
 int	ft_putstr(char *str);
