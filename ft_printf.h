@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 #include <unistd.h>
 #include <stdarg.h>
 
 int	ft_putchar(char c);
+int	ft_printf(const char *format, ...);
 int	ft_putnbr_hexa(unsigned long long nbr, int num_case);
 unsigned int	ft_putnbr_unsign(unsigned int n);
 int	ft_putnbr_sign(int nb);

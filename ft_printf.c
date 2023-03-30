@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_check_format(va_list ap, const char *format)
+static int	ft_check_format(va_list ap, const char *format)
 {
 	int	sum;
 
@@ -64,9 +64,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (sum);
-}
-#include <stdio.h>
-int	main()
-{
-	ft_printf("ab%cde%c", 'c', 'f');
 }
