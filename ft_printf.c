@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 10:55:31 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/30 16:59:08 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:26:29 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ int	ft_printf(const char *format, ...)
 #include <stdio.h>
 int	main()
 {
-	ft_printf("%c\n%c\n%c\n", 'a', 'b', 'c');
-	printf("%c\n%c\n%c\n", 'a', 'b', 'c');
+	ft_printf("ab%cde%c", 'c', 'f');
 }
