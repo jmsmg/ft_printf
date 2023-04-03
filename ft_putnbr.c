@@ -28,10 +28,11 @@ void	ft_recur(unsigned int nb, int *i)
 	else
 	{
 		ft_recur(nb / 10, i);
-		if (ft_putchar(nb % 10 + '0') == -1)
+		if (*i == -1)
 		{
-			*i = -1;
+			return ;
 		}
+		ft_putchar(nb % 10 + '0');
 	}
 }
 

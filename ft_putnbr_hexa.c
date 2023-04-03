@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	ft_rec_put_nbr(unsigned long nbr, char *base, int *i)
+static int	ft_rec_put_nbr(size_t nbr, char *base, int *i)
 {
 	if (*i != -1)
 	{
@@ -37,7 +37,7 @@ static int	ft_rec_put_nbr(unsigned long nbr, char *base, int *i)
 	return (*i);
 }
 
-int	ft_putnbr_hexa(unsigned long long nbr, const char *format)
+int	ft_putnbr_hexa(size_t nbr, const char *format)
 {
 	int		i;
 
@@ -52,8 +52,11 @@ int	ft_putnbr_hexa(unsigned long long nbr, const char *format)
 	}
 	else
 	{
-		write(1, "0x", 2);
+		if (write(1, "0x", 2) == -1)
+		{
+			return (-1);
+		}
 		i += 2;
-		return (ft_rec_put_nbr((unsigned long)nbr, "0123456789abcdef", &i));
+		return (ft_rec_put_nbr(nbr, "0123456789abcdef", &i));
 	}
 }
