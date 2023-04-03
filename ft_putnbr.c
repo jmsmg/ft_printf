@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_recur(int nb, int *i)
+void	ft_recur(unsigned int nb, int *i)
 {
 	if (*i != -1)
 	{
@@ -55,7 +55,7 @@ int	ft_putnbr_sign(int nb)
 	return (i);
 }
 
-unsigned int	ft_putnbr_unsign(unsigned int n)
+int	ft_putnbr_unsign(unsigned int n)
 {
 	int	i;
 

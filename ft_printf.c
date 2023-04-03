@@ -19,7 +19,7 @@ static int	ft_check_format(va_list ap, const char *format)
 	else if (*format == 's')
 		return (ft_putstr(va_arg(ap, void *)));
 	else if (*format == 'p')
-		return (ft_putnbr_hexa((unsigned long)va_arg(ap, void *), format));
+		return (ft_putnbr_hexa((unsigned long long)va_arg(ap, void *), format));
 	else if (*format == 'd' || *format == 'i')
 		return (ft_putnbr_sign(va_arg(ap, int)));
 	else if (*format == 'u')
