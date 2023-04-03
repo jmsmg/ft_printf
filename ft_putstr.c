@@ -19,12 +19,15 @@ int	ft_putstr(char *str)
 	i = 0;
 	if (!str)
 	{
-		write(STDOUT_FILENO, "(null)", 6);
-		return (6);
+		return (write(STDOUT_FILENO, "(null)", 6));
+		
 	}
 	while (str[i])
 	{
-		ft_putchar(str[i]);
+		if (ft_putchar(str[i]) == -1)
+		{
+			return (-1);
+		}
 		i++;
 	}
 	return (i);

@@ -14,7 +14,9 @@
 # define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdlib.h>
 
+void            ft_recur(int nb, int *i);
 int				ft_printf(const char *format, ...);
 int				ft_putchar(char c);
 int				ft_putnbr_hexa(unsigned long long nbr, const char *format);

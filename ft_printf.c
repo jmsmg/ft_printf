@@ -14,33 +14,30 @@
 
 static int	ft_check_format(va_list ap, const char *format)
 {
-	int	sum;
-
-	sum = 0;
 	if (*format == 'c')
-		sum += ft_putchar((char)va_arg(ap, int));
+		return (ft_putchar((char)va_arg(ap, int)));
 	else if (*format == 's')
-		sum += ft_putstr(va_arg(ap, void *));
+		return (ft_putstr(va_arg(ap, void *)));
 	else if (*format == 'p')
-		sum += ft_putnbr_hexa((unsigned long long)va_arg(ap, void *), format);
+		return (ft_putnbr_hexa((unsigned long)va_arg(ap, void *), format));
 	else if (*format == 'd' || *format == 'i')
-		sum += ft_putnbr_sign(va_arg(ap, int));
+		return (ft_putnbr_sign(va_arg(ap, int)));
 	else if (*format == 'u')
-		sum += ft_putnbr_unsign(va_arg(ap, unsigned int));
+		return (ft_putnbr_unsign(va_arg(ap, unsigned int)));
 	else if (*format == 'x')
-		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), format);
+		return (ft_putnbr_hexa(va_arg(ap, unsigned int), format));
 	else if (*format == 'X')
-		sum += ft_putnbr_hexa(va_arg(ap, unsigned int), format);
+		return (ft_putnbr_hexa(va_arg(ap, unsigned int), format));
 	else if (*format == '%')
-		sum += ft_putchar('%');
+		return (ft_putchar('%'));
 	else
 		return (-1);
-	return (sum);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	int		sum;
+	int		tmp;
 	va_list	ap;
 
 	sum = 0;
@@ -54,22 +51,17 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			sum += ft_check_format(ap, format);
+			tmp = ft_check_format(ap, format);
 		}
 		else
 		{
-			sum += ft_putchar(*format);
+			tmp = ft_putchar(*format);
 		}
+		if (tmp == -1)
+			return (-1);
+		sum += tmp;
 		format++;
 	}
 	va_end(ap);
 	return (sum);
 }
-// #include <stdio.h>
-// int	main()
-// {
-// 	int	*a;
-
-// 	ft_printf(" %p ", a);
-// 	printf(" %p ", a);
-// }
