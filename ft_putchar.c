@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 23:24:23 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/30 16:34:48 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:34:49 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putchar(char c)
 {
-	return(write(STDOUT_FILENO, &c, 1));
+	return (write(STDOUT_FILENO, &c, 1));
 }

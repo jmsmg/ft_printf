@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 10:55:31 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/30 18:26:29 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:34:15 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ int	ft_printf(const char *format, ...)
 	sum = 0;
 	va_start(ap, format);
 	if (!format)
-	{
 		return (-1);
-	}
 	while (*format)
 	{
 		if (*format == '%')
@@ -54,9 +52,7 @@ int	ft_printf(const char *format, ...)
 			tmp = ft_check_format(ap, format);
 		}
 		else
-		{
 			tmp = ft_putchar(*format);
-		}
 		if (tmp == -1)
 			return (-1);
 		sum += tmp;

@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 23:29:38 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/29 23:37:22 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:35:35 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_putstr(char *str)
 	if (!str)
 	{
 		return (write(STDOUT_FILENO, "(null)", 6));
-		
 	}
 	while (str[i])
 	{
